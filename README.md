@@ -131,18 +131,6 @@ MAC leads on **Emotional (Emo)** and **Artistic (Art)** alignment on both corpor
 | | MAC *w/o* IPO | 0.78 | 0.50 | 0.43 |
 | | MAC *w/o* Hier. Ctx. | 0.80 | 0.52 | 0.45 |
 
-**Ablations.** Removing **hierarchical context** mainly hurts *Art* (weaker cross-segment linking / adjacent-window consistency). Removing **IPO** lowers *Emo*/*Art* by pushing outputs toward safer, less expressive prose — with the largest *Art* drop on the long-form Opera setting, where holding a coherent narrative voice across sections matters most.
-
-### LLM-as-judge (0–5) on MSD Full
-
-Two independent judges (GPT-5 Thinking, Gemini 3 Thinking) score Fluency / Completeness / Expressiveness. Absolute scales differ by judge calibration; MAC is best or tied on every sub-column. Bold = best per sub-column.
-
-| Variant | Flu. (GPT-5) | Flu. (Gem.) | Comp. (GPT-5) | Comp. (Gem.) | Expr. (GPT-5) | Expr. (Gem.) |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **MAC (ours)** | **4.5** | **2.0** | **4.9** | **2.0** | **5.0** | **3.1** |
-| MAC *w/o* IPO | 3.9 | 1.6 | 3.9 | 1.6 | 3.9 | 1.6 |
-| MAC *w/o* Hier. Ctx. | **4.5** | 1.1 | 4.7 | 1.8 | **5.0** | 3.0 |
-
 ### Example caption
 
 > *MSD Full — 10cc, "Woman In Love" (first 5 s):*
@@ -177,70 +165,7 @@ MAC is evaluated on five datasets spanning short-form benchmarks and narrative-r
 | Hardware | 2 × RTX 3090 (24 GB) — one for vLLM inference, one for feature extraction |
 | Caching | per-song `*_nl_features.json`, `*_llm_response.json`; JSON parsed with ≤3 retries |
 
-```bash
-# 1. Clone
-git clone https://github.com/<your-username>/music-artistic-captioning.git
-cd music-artistic-captioning
-
-# 2. Environment
-conda create -n mac python=3.10 -y
-conda activate mac
-pip install -r requirements.txt
-
-# 3. Serve the caption LLM with vLLM (example)
-vllm serve openai/gpt-oss-20b --port 8000
-```
-
-> The commands and code below are illustrative scaffolding — adapt paths/flags to your release.
-
----
-
-## ⚡ Quick Start
-
-```python
-from mac import MusicArtisticCaptioner
-
-captioner = MusicArtisticCaptioner(
-    llm_endpoint="http://localhost:8000/v1",   # vLLM (GPT-OSS 20B)
-    scales=("global", "functional", "local"),
-    temperature=0.2,
-    max_tokens=2048,
-    seed=42,
-)
-
-# Returns per-scale captions; concat global+functional for a coherent commentary
-result = captioner.caption("samples/wagner_act1.wav")
-print(result["global"])
-```
-
-Command line:
-
-```bash
-python -m mac.run \
-    --audio samples/wagner_act1.wav \
-    --scales global functional local \
-    --out outputs/wagner_act1.json
-```
-
----
-
-## 📁 Repository Structure
-
-```
-music-artistic-captioning/
-├── assets/                  # architecture diagram, qualitative examples
-├── mac/
-│   ├── msa/                 # Stage 1: global / functional (MSAF) / local segmentation
-│   ├── encoding/            # Stage 2: low-level (librosa, BeatNet) + MERT probes → Fₛ
-│   ├── verbalize.py         # evidence dictionaries → NL pseudo-evidence slots
-│   ├── captioner.py         # Stage 3: hierarchical context + LLM + φ validation
-│   └── ipo.py               # one-time Iterative Prompt Optimization (per scale)
-├── configs/                 # scale, feature, LLM, and style configs
-├── eval/                    # benchmark metrics + Art / Emo / Sem + LLM-judge
-├── samples/                 # example audio
-├── requirements.txt
-└── README.md
-```
+### Code Coming Soon!
 
 ---
 
@@ -262,12 +187,6 @@ If you find MAC useful in your research, please cite:
 ## 🙏 Acknowledgements
 
 We thank the INTERSPEECH 2026 reviewers for their feedback. MAC builds on excellent open work including [MSAF](https://github.com/urinieto/msaf), [MERT](https://github.com/yizhilll/MERT), BeatNet, and [vLLM](https://github.com/vllm-project/vllm). *(Add funding and institutional acknowledgements here.)*
-
-## 📄 License
-
-Released under the [MIT License](LICENSE).
-
-<div align="center">
 
 ⭐ **If this work helps you, consider starring the repo!** ⭐
 
