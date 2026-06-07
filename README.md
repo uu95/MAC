@@ -141,14 +141,14 @@ MAC leads on **Emotional (Emo)** and **Artistic (Art)** alignment on both corpor
 
   <!-- First Figure -->
   <a href="https://github.com/uu95/Music-Artistic-Captioning-Towards-Translating-Music-into-Expressive-Language/blob/main/examples.png">
-    <img src="./examples.png" alt="Click to view full size" width="600">
+    <img src="./examples.png" alt="Click to view full size" width="200">
   </a>
 
   <br><br>
 
   <!-- Second Figure -->
   <a href="https://github.com/uu95/Music-Artistic-Captioning-Towards-Translating-Music-into-Expressive-Language/blob/main/feature_extraction.png">
-    <img src="./feature_extraction.png" alt="Click to view full size" width="600">
+    <img src="./feature_extraction.png" alt="Click to view full size" width="200">
   </a>
 
   <p><em>Figures: Click the images above to view them in full resolution.</em></p>
