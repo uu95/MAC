@@ -136,6 +136,17 @@ MAC leads on **Emotional (Emo)** and **Artistic (Art)** alignment on both corpor
 > *MSD Full — 10cc, "Woman In Love" (first 5 s):*
 > "A buoyant 107-BPM pulse, each beat arriving at almost five per second, propels a high-energy groove that feels like a bright, electric surge. The mix of electric guitar riffs, drums, and synthesizers paints a vivid, uplifting landscape, while a male vocalist adds a warm, throaty trill that swells with joy and excitement. The track's key shifts between B♭ minor and G♭ major, giving it a playful, slightly edgy feel that keeps listeners energized as the rhythm rolls into the next section."
 
+### More Examples:
+<a href="https://github.com/uu95/Music-Artistic-Captioning-Towards-Translating-Music-into-Expressive-Language/blob/main/Screenshot%20from%202026-06-07%2017-55-12.png">
+  <img src="./Screenshot from 2026-06-07 17-55-12.png" alt="Click to view full size" width="600">
+</a>
+
+<a href="[https://github.com/uu95/Music-Artistic-Captioning-Towards-Translating-Music-into-Expressive-Language/blob/main/Screenshot%20from%202026-06-07%2017-55-12.png](https://github.com/uu95/Music-Artistic-Captioning-Towards-Translating-Music-into-Expressive-Language/blob/main/feature_extraction.png)">
+  <img src="./feature_extraction.png" alt="Click to view full size" width="600">
+</a>
+
+<p align="center"><em>Figures: Click the images above to view it in full resolution.</em></p>
+
 ---
 
 ## 🗂️ Datasets
